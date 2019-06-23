@@ -5,12 +5,12 @@ import { Recipe } from '../shared/recipe.model';
 import { ShoppingListService } from './../shopping-list/shopping-list.services';
 
 @Injectable({
-   providedIn: 'root'
+	providedIn: 'root'
 })
 export class RecipeService {
-   public recipeSelected = new EventEmitter<Recipe>();
+	public recipeSelected = new EventEmitter<Recipe>();
 
-   private recipes: Recipe[] = [
+	private recipes: Recipe[] = [
 		new Recipe(
 			'A Test recipe',
 			'This is simply a test',
@@ -23,15 +23,19 @@ export class RecipeService {
 			'https://bit.ly/2SEHSyZ',
 			[new Ingredient('Buns', 2), new Ingredient('Meat', 2)]
 		)
-   ];
+	];
 
-   constructor(private shoppingListService: ShoppingListService) {}
+	constructor(private shoppingListService: ShoppingListService) {}
 
-   public getRecipes() {
+	public getRecipes() {
 		return this.recipes.slice();
-   }
+	}
 
-   public onAddIngredientToShoppingList(ingredients: Ingredient[]) {
+	public onAddIngredientToShoppingList(ingredients: Ingredient[]) {
 		this.shoppingListService.addIngredients(ingredients);
-   }
+	}
+
+	public getRecipe(id: number) {
+		return this.recipes[id];
+	}
 }

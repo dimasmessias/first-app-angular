@@ -19,9 +19,17 @@
 				Manage recipe <span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu">
-				<li><a (click)="addToShoppingList()">Shopping list</a></li>
-				<li><a>Add recipe</a></li>
-				<li><a>Delete recipe</a></li>
+				<li>
+					<a style="cursor: pointer;" (click)="addToShoppingList()"
+						>Shopping list</a
+					>
+				</li>
+				<li>
+					<a style="cursor: pointer;" (click)="onEditReipe()"
+						>Edit recipe</a
+					>
+				</li>
+				<li><a style="cursor: pointer;">Delete recipe</a></li>
 			</ul>
 		</div>
 	</div>
