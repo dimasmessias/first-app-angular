@@ -9,19 +9,25 @@ import { RecipeService } from './../recipe.services';
 	templateUrl: './recipe-list.component.html',
 	styleUrls: ['./recipe-list.component.css']
 })
-export class RecipeListComponent implements OnInit {
+export class RecipeListComponent implements OnInit
+{
+	public recipes: Recipe[];
+
 	constructor(
 		private recipeService: RecipeService,
 		private router: Router,
 		private activatedRoute: ActivatedRoute
-	) {}
-	public recipes: Recipe[];
-
-	public onNewRecipe() {
-		this.router.navigate(['new'], { relativeTo: this.activatedRoute });
+	)
+	{
 	}
 
-	public ngOnInit(): void {
+	public onNewRecipe()
+	{
+		this.router.navigate(['new'], {relativeTo: this.activatedRoute});
+	}
+
+	public ngOnInit(): void
+	{
 		this.recipes = this.recipeService.getRecipes();
 	}
 }

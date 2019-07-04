@@ -9,22 +9,28 @@ import { ShoppingListService } from './shopping-list.services';
 	templateUrl: './shopping-list.component.html',
 	styleUrls: ['./shopping-list.component.css']
 })
-export class ShoppingListComponent implements OnInit, OnDestroy {
+export class ShoppingListComponent implements OnInit, OnDestroy
+{
 	private ingredientChangedSubscription: Subscription;
-
-	constructor(private shoppingListService: ShoppingListService) {}
 	public ingredients: Ingredient[];
 
-	public ngOnInit() {
+	constructor(private shoppingListService: ShoppingListService)
+	{
+	}
+
+	public ngOnInit()
+	{
 		this.ingredients = this.shoppingListService.getIngredient();
 		this.ingredientChangedSubscription = this.shoppingListService.ingredientChanged.subscribe(
-			(ingredients: Ingredient[]) => {
+			(ingredients: Ingredient[]) =>
+			{
 				this.ingredients = ingredients;
 			}
 		);
 	}
 
-	public ngOnDestroy() {
+	public ngOnDestroy()
+	{
 		this.ingredientChangedSubscription.unsubscribe();
 	}
 }
