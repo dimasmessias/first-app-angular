@@ -1,3 +1,70 @@
-<p>
-	recipe-edit works!
-</p>
+<div class="row">
+	<div class="col-xs-12">
+		<form (ngSubmit)="onSubmit()" [formGroup]="recipeForm">
+			<div class="row">
+				<div class="col-xs-12 btn-group">
+					<button [disabled]="!recipeForm.valid" class="btn btn-success" type="submit">Save</button>
+					<button (click)="onCancel()" class="btn btn-danger" type="button">Cancel</button>
+					<button (click)="onDeleteRecipe()" [disabled]="!editMode" class="btn btn-danger" type="button">Delete
+					</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="form-group">
+						<label for="name">Name</label>
+						<input class="form-control" formControlName="name" id="name" name="name" type="text">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="form-group">
+						<label for="imagePath">Image URL</label>
+						<input class="form-control" formControlName="imagePath" id="imagePath" name="imagePath" type="text">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<img [src]="recipeForm.get('imagePath').value" alt="" class="img-responsive">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="form-group">
+						<label for="description">Description</label>
+						<textarea class="form-control" formControlName="description" id="description" name="description"
+									 rows="6"></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12" formArrayName="ingredients">
+					<div *ngFor="let ingredient of recipeForm.get('ingredients').controls; let i = index"
+						  [formGroupName]="i"
+						  class="row form-group">
+						<div class="col-xs-8">
+							<input class="form-control" formControlName="name" name="name" type="text">
+						</div>
+						<div class="col-xs-2">
+							<input class="form-control" formControlName="amount" name="amount" type="text">
+						</div>
+						<div class="col-xs-2">
+							<button (click)="onDeleteIngredient(i)" class="btn btn-danger" type="button">X</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 btn-group">
+							<button (click)="onAddIngredient()" class="btn btn-success" type="button">Add ingredient</button>
+							<button (click)="onDeleteAllIngredients()" [disabled]="!recipeForm.get('ingredients')?.length > 0"
+									  class="btn btn-danger	"
+									  type="button">Delete all ingredients
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
