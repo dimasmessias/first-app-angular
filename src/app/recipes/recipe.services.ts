@@ -1,26 +1,27 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Ingredient } from '../shared/ingredient.model';
 import { Recipe } from '../shared/recipe.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.services';
-import { Subject } from 'rxjs';
 
 @Injectable()
 export class RecipeService
 {
-	private recipes: Recipe[] = [
-		new Recipe(
-			'A Test recipe',
-			'This is simply a test',
-			'https://bit.ly/2HVXAQI',
-			[new Ingredient('Meat', 1), new Ingredient('French fries', 2)]
-		),
-		new Recipe(
-			'Hoppins John Recipe',
-			'This is simply a test',
-			'https://bit.ly/2SEHSyZ',
-			[new Ingredient('Buns', 2), new Ingredient('Meat', 2)]
-		)
-	];
+	// private recipes: Recipe[] = [
+	// 	new Recipe(
+	// 		'A Test recipe',
+	// 		'This is simply a test',
+	// 		'https://bit.ly/2HVXAQI',
+	// 		[new Ingredient('Meat', 1), new Ingredient('French fries', 2)]
+	// 	),
+	// 	new Recipe(
+	// 		'Hoppins John Recipe',
+	// 		'This is simply a test',
+	// 		'https://bit.ly/2SEHSyZ',
+	// 		[new Ingredient('Buns', 2), new Ingredient('Meat', 2)]
+	// 	)
+	// ];
+	private recipes: Recipe[] = [];
 
 	public recipeChanged = new Subject<Recipe[]>();
 
@@ -58,6 +59,12 @@ export class RecipeService
 	public deleteRecipe(index: number)
 	{
 		this.recipes.splice(index, 1);
+		this.recipeChanged.next(this.recipes.slice());
+	}
+
+	public setRecipes(recipes: Recipe[])
+	{
+		this.recipes = recipes;
 		this.recipeChanged.next(this.recipes.slice());
 	}
 }

@@ -74,7 +74,8 @@
 		],
 		"curly": [
 			true,
-			"ignore-same-line"
+			"ignore-same-line",
+			"as-needed"
 		],
 		"indent": [
 			true,
@@ -91,7 +92,7 @@
 			"check-finally",
 			"check-else"
 		],
-		"newline-before-return": true,
+		"newline-before-return": false,
 		"trailing-comma": true,
 		"no-output-on-prefix": true,
 		"no-inputs-metadata-property": true,
