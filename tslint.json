@@ -116,6 +116,7 @@
 		"prefer-readonly": true,
 		"no-duplicate-imports": true,
 		"no-async-without-await": true,
-		"ban-comma-operator": true
+		"ban-comma-operator": true,
+		"no-bitwise": true
 	}
 }
