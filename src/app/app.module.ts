@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthComponent } from './auth/auth.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
@@ -16,6 +17,7 @@ import { RecipesStartComponent } from './recipes/recipes-start/recipes-start.com
 import { RecipesComponent } from './recipes/recipes.component';
 import { DataStorageService } from './shared/data-storage.service';
 import { DropdownDirective } from './shared/dropdown.directive';
+import { LoginModePipe } from './shared/login-mode.pipe';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingListService } from './shopping-list/shopping-list.services';
@@ -33,7 +35,9 @@ import { ShoppingListService } from './shopping-list/shopping-list.services';
 		DropdownDirective,
 		RecipesStartComponent,
 		RecipeEditComponent,
-		FooterComponent
+		FooterComponent,
+		AuthComponent,
+		LoginModePipe
 	],
 	imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, AppRoutingModule],
 	providers: [ShoppingListService, RecipeService, DataStorageService, RecipesResolverService],
