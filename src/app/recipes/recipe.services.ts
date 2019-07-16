@@ -7,62 +7,46 @@ import { ShoppingListService } from '../shopping-list/shopping-list.services';
 @Injectable()
 export class RecipeService
 {
-	// private recipes: Recipe[] = [
-	// 	new Recipe(
-	// 		'A Test recipe',
-	// 		'This is simply a test',
-	// 		'https://bit.ly/2HVXAQI',
-	// 		[new Ingredient('Meat', 1), new Ingredient('French fries', 2)]
-	// 	),
-	// 	new Recipe(
-	// 		'Hoppins John Recipe',
-	// 		'This is simply a test',
-	// 		'https://bit.ly/2SEHSyZ',
-	// 		[new Ingredient('Buns', 2), new Ingredient('Meat', 2)]
-	// 	)
-	// ];
 	private recipes: Recipe[] = [];
 
 	public recipeChanged = new Subject<Recipe[]>();
 
-	constructor(private shoppingListService: ShoppingListService)
-	{
-	}
+	constructor(private readonly shoppingListService: ShoppingListService) { }
 
-	public getRecipes()
+	public getRecipes(): Recipe[]
 	{
 		return this.recipes.slice();
 	}
 
-	public addIngredientToShoppingList(ingredients: Ingredient[])
+	public addIngredientToShoppingList(ingredients: Ingredient[]): void
 	{
 		this.shoppingListService.addIngredients(ingredients);
 	}
 
-	public getRecipe(id: number)
+	public getRecipe(id: number): Recipe
 	{
 		return this.recipes[id];
 	}
 
-	public addRecipe(recipe: Recipe)
+	public addRecipe(recipe: Recipe): void
 	{
 		this.recipes.push(recipe);
 		this.recipeChanged.next(this.recipes.slice());
 	}
 
-	public updateRecipe(index: number, newRecipe: Recipe)
+	public updateRecipe(index: number, newRecipe: Recipe): void
 	{
 		this.recipes[index] = newRecipe;
 		this.recipeChanged.next(this.recipes.slice());
 	}
 
-	public deleteRecipe(index: number)
+	public deleteRecipe(index: number): void
 	{
 		this.recipes.splice(index, 1);
 		this.recipeChanged.next(this.recipes.slice());
 	}
 
-	public setRecipes(recipes: Recipe[])
+	public setRecipes(recipes: Recipe[]): void
 	{
 		this.recipes = recipes;
 		this.recipeChanged.next(this.recipes.slice());

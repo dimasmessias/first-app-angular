@@ -15,13 +15,13 @@ export class RecipeEditComponent implements OnInit
 	public recipeForm: FormGroup;
 
 	constructor(
-		private activatedRoute: ActivatedRoute,
-		private recipeService: RecipeService,
-		private router: Router)
+		private readonly activatedRoute: ActivatedRoute,
+		private readonly recipeService: RecipeService,
+		private readonly router: Router)
 	{
 	}
 
-	public ngOnInit()
+	public ngOnInit(): void
 	{
 		this.activatedRoute.params.subscribe((params: Params) =>
 		{
@@ -31,22 +31,17 @@ export class RecipeEditComponent implements OnInit
 		});
 	}
 
-	public onSubmit()
+	public onSubmit(): void
 	{
 		if (this.editMode)
-		{
 			this.recipeService.updateRecipe(this.id, this.recipeForm.value);
-		}
 		else
-		{
 			this.recipeService.addRecipe(this.recipeForm.value);
-		}
 
-		console.log(this.recipeForm.value);
 		this.onCancel();
 	}
 
-	public onAddIngredient()
+	public onAddIngredient(): void
 	{
 		(this.recipeForm.get('ingredients') as FormArray).push(
 			new FormGroup({
@@ -56,23 +51,23 @@ export class RecipeEditComponent implements OnInit
 		);
 	}
 
-	public onDeleteIngredient(index: number)
+	public onDeleteIngredient(index: number): void
 	{
 		(this.recipeForm.get('ingredients') as FormArray).removeAt(index);
 	}
 
-	public onDeleteRecipe()
+	public onDeleteRecipe(): void
 	{
 		this.recipeService.deleteRecipe(this.id);
 		this.router.navigate(['/recipes']);
 	}
 
-	public onCancel()
+	public onCancel(): void
 	{
 		this.router.navigate(['../'], {relativeTo: this.activatedRoute});
 	}
 
-	public onDeleteAllIngredients()
+	public onDeleteAllIngredients(): void
 	{
 		(this.recipeForm.get('ingredients') as FormArray).clear();
 	}

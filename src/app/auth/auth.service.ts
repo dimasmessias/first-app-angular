@@ -17,15 +17,13 @@ export interface IAuthResponseData
 	registered?: boolean;
 }
 
-@Injectable({
-	providedIn: 'root'
-})
+@Injectable({providedIn: 'root'})
 export class AuthService
 {
 	private autoLogoutTimer: any;
 	public user = new BehaviorSubject<User>(null);
 
-	constructor(private http: HttpClient, private router: Router) {}
+	constructor(private readonly http: HttpClient, private readonly router: Router) {}
 
 	public signUp(email: string, password: string): Observable<IAuthResponseData>
 	{
@@ -62,7 +60,7 @@ export class AuthService
 		if (!user || !user.token)
 			return;
 
-		const newUser: User = new User(user.email, user.id, user.token,  new Date(user.tokenExpirationData));
+		const newUser: User = new User(user.email, user.id, user.token, new Date(user.tokenExpirationData));
 		const expirationDate = newUser.getExpirationData.getTime() - new Date().getTime();
 		this.autoLogout(expirationDate);
 		this.user.next(newUser);

@@ -8,7 +8,7 @@ import { RecipeService } from './recipe.services';
 @Injectable()
 export class RecipesResolverService implements Resolve<Recipe[]>
 {
-	constructor(private dataStorageService: DataStorageService, private recipeService: RecipeService) {}
+	constructor(private readonly dataStorageService: DataStorageService, private readonly recipeService: RecipeService) {}
 
 	public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Recipe[]> | Promise<Recipe[]> | Recipe[]
 	{

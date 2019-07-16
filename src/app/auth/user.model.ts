@@ -3,8 +3,8 @@ export class User
 	constructor(
 		public email: string,
 		public id: string,
-		private token: string,
-		private tokenExpirationData: Date)
+		private readonly token: string,
+		private readonly tokenExpirationData: Date)
 	{ }
 
 	public get getToken(): string

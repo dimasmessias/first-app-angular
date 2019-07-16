@@ -20,6 +20,7 @@ import { AlertComponent } from './shared/alert/alert.component';
 import { DataStorageService } from './shared/data-storage.service';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { LoginModePipe } from './shared/login-mode.pipe';
+import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingListService } from './shopping-list/shopping-list.services';
@@ -40,7 +41,8 @@ import { ShoppingListService } from './shopping-list/shopping-list.services';
 		FooterComponent,
 		AuthComponent,
 		LoginModePipe,
-		AlertComponent
+		AlertComponent,
+		PlaceholderDirective
 	],
 	imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, AppRoutingModule],
 	providers: [ShoppingListService, RecipeService, DataStorageService, RecipesResolverService, {
@@ -48,7 +50,8 @@ import { ShoppingListService } from './shopping-list/shopping-list.services';
 		useClass: AuthInterceptorService,
 		multi: true
 	}],
-	bootstrap: [AppComponent]
+	bootstrap: [AppComponent],
+	entryComponents: [AlertComponent]
 })
 export class AppModule
 {

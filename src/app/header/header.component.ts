@@ -11,10 +11,12 @@ import { DataStorageService } from '../shared/data-storage.service';
 export class HeaderComponent implements OnInit, OnDestroy
 {
 	private userSubscription: Subscription;
-
 	public isAuthenticated = false;
 
-	constructor(private dataStorageService: DataStorageService, private authService: AuthService) {}
+	constructor(
+		private readonly dataStorageService: DataStorageService,
+		private readonly authService: AuthService)
+	{}
 
 	public onSaveData(): void
 	{
