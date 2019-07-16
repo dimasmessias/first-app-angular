@@ -16,6 +16,7 @@ import { RecipeService } from './recipes/recipe.services';
 import { RecipesResolverService } from './recipes/recipes-resolver.service';
 import { RecipesStartComponent } from './recipes/recipes-start/recipes-start.component';
 import { RecipesComponent } from './recipes/recipes.component';
+import { AlertComponent } from './shared/alert/alert.component';
 import { DataStorageService } from './shared/data-storage.service';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { LoginModePipe } from './shared/login-mode.pipe';
@@ -38,7 +39,8 @@ import { ShoppingListService } from './shopping-list/shopping-list.services';
 		RecipeEditComponent,
 		FooterComponent,
 		AuthComponent,
-		LoginModePipe
+		LoginModePipe,
+		AlertComponent
 	],
 	imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, AppRoutingModule],
 	providers: [ShoppingListService, RecipeService, DataStorageService, RecipesResolverService, {

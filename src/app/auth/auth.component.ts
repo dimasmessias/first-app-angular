@@ -17,16 +17,16 @@ export class AuthComponent implements OnInit
 
 	constructor(private authService: AuthService, private router: Router) { }
 
-	public ngOnInit()
+	public ngOnInit(): void
 	{
 	}
 
-	public onSwitchMode()
+	public onSwitchMode(): void
 	{
 		this.isLoginMode = !this.isLoginMode;
 	}
 
-	public onSubmit(form: NgForm)
+	public onSubmit(form: NgForm): void
 	{
 		if (!form.valid)
 			return;
@@ -41,18 +41,21 @@ export class AuthComponent implements OnInit
 		else
 			authObservable =  this.authService.signUp(email, password);
 
-		authObservable.subscribe((responseData) =>
+		authObservable.subscribe(() =>
 		{
-			console.log(responseData);
 			this.error = null;
 			this.router.navigate(['/recipes']);
 		}, errorMessage =>
 		{
-			console.log(errorMessage);
 			this.error = errorMessage;
 		});
 
 		this.isBusy = false;
 		form.reset();
+	}
+
+	public onHandleError(): void
+	{
+		this.error = null;
 	}
 }

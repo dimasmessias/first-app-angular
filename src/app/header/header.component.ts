@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
-import { User } from '../auth/user.model';
 import { DataStorageService } from '../shared/data-storage.service';
 
 @Component({
@@ -29,12 +28,13 @@ export class HeaderComponent implements OnInit, OnDestroy
 
 	public ngOnInit(): void
 	{
-		let loggedUser: User = null;
 		this.userSubscription = this.authService.user.subscribe(user =>
 		{
 			this.isAuthenticated = !!user;
-			loggedUser = user;
 		});
+
+		if (this.isAuthenticated)
+			this.onFetchData();
 	}
 
 	public ngOnDestroy(): void
