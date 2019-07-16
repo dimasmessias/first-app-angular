@@ -13,6 +13,13 @@
 			true,
 			"rxjs/Rx"
 		],
+		"typedef": [
+			true,
+			"call-signature",
+			"parameter",
+			"arrow-call-signature",
+			"property-declaration"
+		],
 		"interface-name": true,
 		"max-classes-per-file": false,
 		"max-line-length": [
