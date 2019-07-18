@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Ingredient } from '../shared/ingredient.model';
 
@@ -11,6 +12,7 @@ export interface IShoppingListService
 	deleteIngredient(index: number): void;
 }
 
+@Injectable({providedIn: 'root'})
 export class ShoppingListService implements IShoppingListService
 {
 	private readonly ingredients: Ingredient[] = [

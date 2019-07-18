@@ -5,7 +5,7 @@ import { DataStorageService } from '../shared/data-storage.service';
 import { Recipe } from '../shared/recipe.model';
 import { RecipeService } from './recipe.services';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class RecipesResolverService implements Resolve<Recipe[]>
 {
 	constructor(private readonly dataStorageService: DataStorageService, private readonly recipeService: RecipeService) {}
