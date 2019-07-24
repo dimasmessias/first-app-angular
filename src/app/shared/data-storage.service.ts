@@ -13,10 +13,7 @@ export class DataStorageService
 	public storeRecipes(): void
 	{
 		const recipes = this.recipeService.getRecipes();
-		this.http.put('https://myfirstapp-angular.firebaseio.com/recipes.json', recipes).subscribe((response) =>
-		{
-			console.log(response);
-		});
+		this.http.put('https://myfirstapp-angular.firebaseio.com/recipes.json', recipes).subscribe();
 	}
 
 	public fetchRecipeData(): Observable<Recipe[]>
