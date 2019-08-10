@@ -41,7 +41,7 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-12" formArrayName="ingredients">
-					<div *ngFor="let ingredient of recipeForm.get('ingredients').controls; let i = index"
+					<div *ngFor="let ingredient of getIngredients(); let i = index"
 						  [formGroupName]="i"
 						  class="row form-group">
 						<div class="col-xs-8">
@@ -57,7 +57,7 @@
 					<div class="row">
 						<div class="col-xs-12 btn-group">
 							<button (click)="onAddIngredient()" class="btn btn-success" type="button">Add ingredient</button>
-							<button (click)="onDeleteAllIngredients()" [disabled]="!recipeForm.get('ingredients')?.length > 0"
+							<button (click)="onDeleteAllIngredients()" [disabled]="hasIngredient()"
 									  class="btn btn-danger	"
 									  type="button">Delete all ingredients
 							</button>

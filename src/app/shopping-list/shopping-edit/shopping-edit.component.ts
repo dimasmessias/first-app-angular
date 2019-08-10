@@ -12,9 +12,9 @@ import { ShoppingListService } from '../shopping-list.services';
 export class ShoppingEditComponent implements OnInit, OnDestroy
 {
 	private subscription: Subscription;
-	private editMode = false;
 	private editedItemIndex: number;
 	private editedItem: Ingredient;
+	public editMode = false;
 	@ViewChild('form', {static: false}) public shoppingListForm: NgForm;
 
 	constructor(private readonly shoppingListService: ShoppingListService)

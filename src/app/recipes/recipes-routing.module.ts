@@ -12,6 +12,7 @@ const appRoutes: Routes = [
 		path: '',
 		component: RecipesComponent,
 		canActivate: [AuthGuard],
+		resolve: [RecipesResolverService],
 		children: [
 			{path: '', component: RecipesStartComponent},
 			{path: 'new', component: RecipeEditComponent},

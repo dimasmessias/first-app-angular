@@ -25,7 +25,7 @@ import { PlaceholderDirective } from './shared/placeholder/placeholder.directive
 		PlaceholderDirective
 	],
 	imports: [
-		BrowserModule,
+		BrowserModule.withServerTransition({ appId: 'serverApp' }),
 		FormsModule,
 		ReactiveFormsModule,
 		HttpClientModule,
