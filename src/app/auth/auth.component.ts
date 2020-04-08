@@ -13,7 +13,7 @@ import { AuthService, IAuthResponseData } from './auth.service';
 })
 export class AuthComponent implements OnInit, OnDestroy
 {
-	@ViewChild(PlaceholderDirective, {static: false}) private readonly alertHost: PlaceholderDirective;
+	@ViewChild(PlaceholderDirective) private readonly alertHost: PlaceholderDirective;
 	private closeSubscription: Subscription;
 	public isLoginMode = true;
 	public error: string = null;
